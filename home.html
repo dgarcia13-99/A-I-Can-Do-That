@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A(I) Can Do That? - Campaign</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px rgba(74, 144, 226, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(74, 144, 226, 0.6); }
+            100% { box-shadow: 0 0 5px rgba(74, 144, 226, 0.3); }
+        }
+
+        @keyframes borderGlow {
+            0% { border-color: rgba(74, 144, 226, 0.3); }
+            50% { border-color: rgba(74, 144, 226, 0.8); }
+            100% { border-color: rgba(74, 144, 226, 0.3); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background: linear-gradient(-45deg, #1e3c72, #2a5298, #4a90e2, #1e3c72);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #1e3c72, #4a90e2);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #1e3c72, #4a90e2);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s ease-out, float 6s ease-in-out infinite;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .video-container {
+            max-width: 1000px;
+            width: 90%;
+            margin: 3rem auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            background: #000;
+            animation: glow 3s ease-in-out infinite;
+            border: 2px solid rgba(74, 144, 226, 0.3);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .video-container:hover {
+            transform: scale(1.02);
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .process-section {
+            background: white;
+            padding: 4rem 0;
+            margin-top: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .process-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #4a90e2, #1e3c72);
+        }
+
+        .process-steps {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 280px;
+            padding: 2rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform-origin: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(74, 144, 226, 0.1);
+            animation: borderGlow 3s ease-in-out infinite;
+            animation-delay: var(--delay);
+        }
+
+        .process-step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4a90e2, #1e3c72);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: left;
+        }
+
+        .process-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .process-step:hover::before {
+            transform: scaleX(1);
+        }
+
+        .process-step h3 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .process-step h3::before {
+            content: '→';
+            color: #4a90e2;
+            font-weight: bold;
+            transform: translateX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .process-step:hover h3::before {
+            transform: translateX(5px);
+        }
+
+        .submission-guide {
+            background: white;
+            padding: 4rem 0;
+            margin-top: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .guidelines {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .guidelines li {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            position: relative;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .guidelines li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #4a90e2;
+            font-weight: bold;
+        }
+
+        footer {
+            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            margin-top: 2rem;
+            background: linear-gradient(45deg, #4a90e2, #1e3c72);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(74, 144, 226, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>A(I) Can Do That?</h1>
+            <p>Showcasing How Our Employees Leverage AI in Their Daily Work</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Share Your AI Journey</h1>
+                <p>Join us in showcasing how AI is transforming the way we work. Your innovative approach could inspire colleagues across the company.</p>
+                <div class="video-container" id="videoContainer">
+                    <video autoplay loop playsinline>
+                        <source src="../Assets/Launch video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <section class="process-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #1e3c72; font-size: 2.5rem; margin-bottom: 2rem;">Campaign Process</h2>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <h3>Phase 1: Submissions Open</h3>
+                        <p>We are currently accepting 60-second videos showcasing how you use AI to facilitate a process in your daily life. Submit your entry to be considered!</p>
+                    </div>
+                    <div class="process-step">
+                        <h3>Phase 2: Expert Review</h3>
+                        <p>Our panel of judges will review all submissions and select the top 5 most innovative and impactful AI implementations.</p>
+                    </div>
+                    <div class="process-step">
+                        <h3>Phase 3: Employee Voting</h3>
+                        <p>The final 5 submissions will be showcased for company-wide voting to determine the winner.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="submit" class="submission-guide">
+            <div class="container">
+                <h2 style="text-align: center; color: #1e3c72; font-size: 2.5rem; margin-bottom: 2rem;">How to Submit Your Story</h2>
+                <div class="guidelines">
+                    <ol>
+                        <li>Record a 60-second video showcasing how you use AI in your work</li>
+                        <li>Keep it simple and focus on the practical benefits</li>
+                        <li>Show real examples of your AI-powered workflow</li>
+                        <li>Highlight the impact on your productivity</li>
+                        <li>Share any tips or insights for colleagues who might want to try similar approaches</li>
+                    </ol>
+                    <div style="text-align: center;">
+                        <a href="https://forms.office.com/pages/responsepage.aspx?id=bGf3QlX0PEKC9twtmXka9xoYleydqrVEvYEO6CYZQlpUMktDV1c4QllOWFVQREJFWTdNNEZUWUM1MS4u&route=shorturl" class="cta-button" target="_blank">Submit Your Video</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; SAP | 2025 A(I) Can Do That? </p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth scroll behavior for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Animate elements when they come into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeInUp 0.5s ease-out forwards';
+                    }
+                });
+            });
+
+            document.querySelectorAll('.process-step').forEach((el, index) => {
+                el.style.setProperty('--delay', `${index * 1}s`);
+                observer.observe(el);
+            });
+            
+            document.querySelectorAll('.guidelines li').forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.2}s`;
+                observer.observe(el);
+            });
+
+            // Ensure video is playing
+            const video = document.querySelector('video');
+            video.play().catch(function(error) {
+                console.log("Video play failed:", error);
+            });
+        });
+    </script>
+</body>
+</html>
